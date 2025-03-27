@@ -21,8 +21,8 @@ function formatDate(date, fromFormat, toFormat) {
         break;
 
       case 'YYYY':
-        if (fromFormat.length > dateYear.length) {
-          newDate.push((dateYear < 30 ? 20 : 19) + dateYear);
+        if (fromFormat.includes('YY')) {
+          newDate.push((parseInt(dateYear, 10) < 30 ? '20' : '19') + dateYear);
         } else {
           newDate.push(dateYear);
         }
@@ -30,7 +30,7 @@ function formatDate(date, fromFormat, toFormat) {
 
       case 'YY':
         if (dateArr[fromFormat.indexOf('YYYY')]) {
-          newDate.push(dateYear.slice(2, 4));
+          newDate.push(dateYear.slice(-2));
         } else {
           newDate.push(dateYear);
         }
